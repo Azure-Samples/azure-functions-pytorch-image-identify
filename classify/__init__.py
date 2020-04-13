@@ -8,8 +8,8 @@ from .predict import predict_image_from_url
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     image_url = req.params.get('img')
-    logging.info('Image URL received: ' + image_url)
-
+    model = req.params.get('model')
+    logging.info('Image URL received: ' + image_url)    
     results = predict_image_from_url(image_url)
 
     headers = {

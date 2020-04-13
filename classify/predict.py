@@ -7,11 +7,54 @@ import logging
 import os
 import sys
 import torch
+import tempfile
 import torchvision.models as models
 
-#os.environ['TORCH_HOME'] = '/model/'
-os.environ['TORCH_HOME'] = r'C:\Users\anirudhg.NORTHAMERICA'
-model = models.resnet34(pretrained=True)
+useTemp = True
+
+if 'ModelDirectory' in os.environ:
+    modelDirectory = os.getenv('ModelDirectory')
+    if os.path.isdir(modelDirectory):
+        useTemp = False
+
+if useTemp:
+    modelDirectory = tempfile.gettempdir()
+
+if 'ModelName' in os.environ:
+    modelName = os.getenv('ModelName')
+else:
+    modelName = 'resnet18'
+
+os.environ['TORCH_HOME'] = modelDirectory
+
+#These are some of the pre-trained models from here:
+#https://pytorch.org/docs/stable/torchvision/models.html
+
+if(modelName == 'alexnet'):
+    model = models.alexnet(pretrained=True, progress=False)
+elif(modelName == 'resnet18'):
+    model = models.resnet18(pretrained=True, progress=False)
+elif(modelName == 'resnet34'):
+    model = models.resnet34(pretrained=True, progress=False)
+elif(modelName == 'resnet50'):
+    model = models.resnet50(pretrained=True, progress=False)
+elif(modelName == 'resnet101'):
+    model = models.resnet50(pretrained=True, progress=False)
+elif(modelName == 'resnet152'):
+    model = models.resnet50(pretrained=True, progress=False)
+elif(modelName == 'vgg11'):
+    model = models.vgg11(pretrained=True, progress=False)
+elif(modelName == 'vgg11_bn'):
+    model = models.vgg11_bn(pretrained=True, progress=False)
+elif(modelName == 'squeezenet1_0'):
+    model = models.squeezenet1_0(pretrained=True, progress=False)
+elif(modelName == 'squeezenet1_1'):
+    model = models.squeezenet1_1(pretrained=True, progress=False)
+elif(modelName == 'densenet161'):
+    model = models.densenet161(pretrained=True, progress=False)
+elif(modelName == 'googlenet'):
+    model = models.googlenet(pretrained=True, progress=False)
+
 model.eval()
 
 def get_class_labels():
@@ -32,6 +75,8 @@ def get_class_labels():
     return class_dict
 
 def predict_image_from_url(image_url):   
+    logging.info('using model: ' + modelName)
+    logging.info('model is loaded from ' + modelDirectory)
     class_dict = get_class_labels()
     with urlopen(image_url) as testImage:
         input_image = Image.open(testImage).convert('RGB')
@@ -44,18 +89,15 @@ def predict_image_from_url(image_url):
         input_tensor = preprocess(input_image)
         input_batch = input_tensor.unsqueeze(0) # create a mini-batch as expected by the model
 
-        logging.info('Before using GPU')
         # move the input and model to GPU for speed if available
         if torch.cuda.is_available():
-            logging.info('GPU')
+            logging.info('Using GPU')
             input_batch = input_batch.to('cuda')
-            model.to('cuda')
-  
-        logging.info('After using GPU')
+            model.to('cuda')  
+        
         with torch.no_grad():
-            output = model(input_batch)
-        # Tensor of shape 1000, with confidence scores over Imagenet's 1000 classes
-        print(output[0])
+            output = model(input_batch)        
+  
         # The output has unnormalized scores. To get probabilities, you can run a softmax on it.
         softmax = (torch.nn.functional.softmax(output[0], dim=0))
         out = class_dict[softmax.argmax().item()]
