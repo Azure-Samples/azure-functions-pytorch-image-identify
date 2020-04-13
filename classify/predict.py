@@ -39,9 +39,9 @@ elif(modelName == 'resnet34'):
 elif(modelName == 'resnet50'):
     model = models.resnet50(pretrained=True, progress=False)
 elif(modelName == 'resnet101'):
-    model = models.resnet50(pretrained=True, progress=False)
+    model = models.resnet101(pretrained=True, progress=False)
 elif(modelName == 'resnet152'):
-    model = models.resnet50(pretrained=True, progress=False)
+    model = models.resnet152(pretrained=True, progress=False)
 elif(modelName == 'vgg11'):
     model = models.vgg11(pretrained=True, progress=False)
 elif(modelName == 'vgg11_bn'):
