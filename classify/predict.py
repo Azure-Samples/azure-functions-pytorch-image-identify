@@ -52,6 +52,12 @@ elif(modelName == 'squeezenet1_1'):
     model = models.squeezenet1_1(pretrained=True, progress=False)
 elif(modelName == 'densenet161'):
     model = models.densenet161(pretrained=True, progress=False)
+elif(modelName == 'shufflenet_v2_x0_5'):
+    model = models.shufflenet_v2_x0_5(pretrained=True, progress=False)
+elif(modelName == 'mobilenet_v2'):
+    model = models.mobilenet_v2(pretrained=True, progress=False)
+elif(modelName == 'mnasnet1_0'):
+    model = models.mnasnet1_0(pretrained=True, progress=False)
 elif(modelName == 'googlenet'):
     model = models.googlenet(pretrained=True, progress=False)
 
