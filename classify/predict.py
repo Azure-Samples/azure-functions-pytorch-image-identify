@@ -111,7 +111,8 @@ def predict_image_from_url(image_url):
         response = {
             'created': datetime.utcnow().isoformat(),
             'predictedTagName': out,
-            'prediction': softmax.max().item()
+            'prediction': softmax.max().item(),
+            'modelUsed' : modelName
         }
 
         logging.info(f'returning {response}')

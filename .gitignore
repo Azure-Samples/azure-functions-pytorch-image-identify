@@ -41,3 +41,6 @@ venv.bak/
 __pycache__/
 *.py[cod]
 *$py.class
+
+call.ps1
+/frontend
