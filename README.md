@@ -37,7 +37,18 @@ This sample shows how to set up, write and deploy a Python Machine Learning infe
 
 * Open this directory in Visual Studio Code. Visual Studio Code should be able to recognize that this is a Function app and automatically activate the Azure Functions extension. See [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python) for more.
 
-* Start debugging 
+* Start debugging using VSCode, you should see
+    * PyTorch libraries downloaded locally (specified in the requirements.txt file)
+    * The default PyTorch model "resnet18" is downloaded
+    * The function app starts to run
+    
+    ![function-starts](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/local-debugging.png)
+
+    * Open a browser and invoke the function app with the URL to an image of an animal
+    http://localhost:7071/api/classify?img=https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/penguin.jpg
+
+    * You should see the following result
+    ![result-local-debugging](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/result-local-debugging.png)
 
 ### Update the code 
 
