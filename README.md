@@ -21,6 +21,8 @@ Taxonomies for products and languages: https://review.docs.microsoft.com/new-hop
 
 This sample shows how to set up, write and deploy a Python Machine Learning inference Azure Function app which uses Remote Build and Bring your own Storage features.
 
+Made some change
+
 ## Prerequisites
 
 * [VSCode](https://code.visualstudio.com/) with the [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)   
