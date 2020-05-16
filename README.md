@@ -50,6 +50,7 @@ This sample shows how to set up, write and deploy a Python Machine Learning infe
     * You should see the following result
     ![result-local-debugging](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/result-local-debugging.png)
 
+Whatever
 ### Update the code 
 
 * Change the code in kafka_example.cs to point to your Kafka cluster that you set up in the previous step
