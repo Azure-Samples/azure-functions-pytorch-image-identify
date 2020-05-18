@@ -181,11 +181,15 @@ with the result of the form as before.
 
   **Another important thing to note that the model was not included in the application and has been downloaded and read from the Azure file share which was automatically mounted on to the container.**
 
-  This is a view of the Azure file share "model"
+  This is a view of the Azure file share "model". As can be seen the models are in the file share.
 
 ![storage-account-file-share](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/storage-account-file-share.png)
 
-### Deploying the sample to a Azure Functions Premium Plan
+Changing the application setting "ModelName" to some other model name would allow a different model to be downloaded(once) to the file share and will be used subsequently from there. This can be done without needing to re-deploy the app showing the separation of the app from the model.
+
+### Deploying the sample to a Azure Functions Premium Plan for larger memory SKU's and no cold start
+
+
 
 ### Contributing
 
