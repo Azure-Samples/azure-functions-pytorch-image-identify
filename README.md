@@ -177,7 +177,7 @@ As an example:
 http://pytorch-image-consumption.azurewebsites.net/api/classify?code=*function-code*&img=https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/penguin.jpg
 
 with the result of the form as before.
-  ![results-prod](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/results-prod-debugging.png)
+  ![results-production](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/results-production.png)
 
   **Another important thing to note that the model was not included in the application and has been downloaded and read from the Azure file share which was automatically mounted on to the container.**
 
