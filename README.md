@@ -21,7 +21,7 @@ Taxonomies for products and languages: https://review.docs.microsoft.com/new-hop
 
 This sample shows how to set up, write and deploy a Python Machine Learning inference Azure Function app which uses Remote Build and Bring your own Storage features. It uses the pre-trained PyTorch image recognition models from here.
 
-## Prerequisites
+### Prerequisites
 
 * [VSCode](https://code.visualstudio.com/) with the [Azure Functions extension](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp)
 
@@ -31,7 +31,7 @@ This sample shows how to set up, write and deploy a Python Machine Learning infe
 
 * [Azure Account](https://azure.microsoft.com/en-us/free/) and access to [Azure Portal](https://azure.microsoft.com/en-us/features/azure-portal/) and [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
 
-## Steps to set up and run locally
+### Steps to set up and run locally
 
 * Clone this repository using Git to a folder locally
 
@@ -50,7 +50,7 @@ This sample shows how to set up, write and deploy a Python Machine Learning infe
     * You should see the following result which should show that it found a Penguin with 0.999... probability and we are using the resnet18 model
     ![result-local-debugging](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/results-local-debugging.png)
 
-## Create a Azure Functions Consumption Python app and set up your own Azure Files share associated with that app
+### Create a Azure Functions Consumption Python app and set up your own Azure Files share associated with that app
 
 Use any of the following methods to create a Azure Functions Consumption Python app. Choose the Python version as 3.7 and the Consumption plan (which should be the defaults)
 
@@ -92,7 +92,7 @@ Here, the *resource-group* points to the storage account's resource group, *name
 
 **Once this command is run then whenever we spin up a new container for the Python Function app then the Azure File share will be mounted to the container and be available to the running app.**
 
-## Set the Application Settings for the directory and the model
+### Set the Application Settings for the directory and the model
 
 As mentioned above, the function app has now access to a Azure file share. The code is written in such a way that it looks for a directory specified in the app's Application Settings with the name *ModelDirectory* and if found uses that directory for where it can find the model or uses the temp directory. From predict.py:
 
@@ -149,7 +149,7 @@ Now, you can go ahead and deploy the local app to your app in Azure. You can use
 * Using [VSCode](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files)
 * Using [func core tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function-azure-cli?tabs=bash%2Cbrowser&pivots=programming-language-python#deploy-the-function-project-to-azure)
 
-An important thing to note here is that you have not had to actually include any of the modules needed with your application. Instead you only have to include the modules required in the requirements.txt file. Then during deployment the right modules based on the runtime OS are pip installed on the server side before the application is deployed. See below for a snippet of the deployment logs showing this.
+**An important thing to note here is the none of the modules need to be included with the application. Instead the modules can just be listed in the requirements.txt file. During deployment the right modules based on the runtime OS are pip installed on the server side before the application is deployed. See below for a snippet of the deployment logs showing this.**
 
 ```
 12:02:54 AM pytorch-image-consumption: Starting deployment...
@@ -171,6 +171,19 @@ An important thing to note here is that you have not had to actually include any
 12:04:08 AM pytorch-image-consumption: [07:04:08+0000] Successfully installed azure-functions-1.2.1 certifi-2020.4.5.1 chardet-3.0.4 idna-2.9 numpy-1.15.4 pillow-7.1.2 requests-2.23.0 six-1.14.0 torch-1.4.0+cpu torchvision-0.5.0 urllib3-1.25.9
 
 ```
+Once the function app is deployed invoke the function app in a browser by passing a image using the img as a query parameter.
+As an example:
+
+http://pytorch-image-consumption.azurewebsites.net/api/classify?code=*function-code*&img=https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/penguin.jpg
+
+with the result of the form as before.
+  ![results-prod](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/results-prod.png)
+
+  **Another important thing to note that the model was not included in the application and has been downloaded and read from the Azure file share which was automatically mounted on to the container.**
+
+  This is a view of the Azure file share "model"
+
+![storage-account-file-share](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/storage-account-file-share.png)
 
 ### Deploying the sample to a Azure Functions Premium Plan
 
