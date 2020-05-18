@@ -20,12 +20,12 @@ if 'ModelDirectory' in os.environ:
 if useTemp:
     modelDirectory = tempfile.gettempdir()
 
+os.environ['TORCH_HOME'] = modelDirectory
+
 if 'ModelName' in os.environ:
     modelName = os.getenv('ModelName')
 else:
     modelName = 'resnet18'
-
-os.environ['TORCH_HOME'] = modelDirectory
 
 #These are some of the pre-trained models from here:
 #https://pytorch.org/docs/stable/torchvision/models.html
