@@ -149,7 +149,7 @@ Now, you can go ahead and deploy the local app to your app in Azure. You can use
 * Using [VSCode](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files)
 * Using [func core tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function-azure-cli?tabs=bash%2Cbrowser&pivots=programming-language-python#deploy-the-function-project-to-azure)
 
-**An important thing to note here is the none of the modules need to be included with the application. Instead the modules can just be listed in the requirements.txt file. During deployment the right modules based on the runtime OS are pip installed on the server side before the application is deployed. See below for a snippet of the deployment logs showing this.**
+*Note here that the none of the modules need to be included with the application. Instead the modules can just be listed in the requirements.txt file. During deployment the right modules based on the runtime OS are pip installed on the server side before the application is deployed. See below for a snippet of the deployment logs showing this.*
 
 ```
 12:02:54 AM pytorch-image-consumption: Starting deployment...
@@ -174,12 +174,12 @@ Now, you can go ahead and deploy the local app to your app in Azure. You can use
 Once the function app is deployed invoke the function app in a browser by passing a image using the img as a query parameter.
 As an example:
 
-http://pytorch-image-consumption.azurewebsites.net/api/classify?code=*function-code*&img=https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/penguin.jpg
+http://pytorch-image-consumption.azurewebsites.net/api/classify?code=function-code&img=https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/penguin.jpg
 
 with the result of the form as before.
   ![results-production](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/results-production.png)
 
-  **Another important thing to note that the model was not included in the application and has been downloaded and read from the Azure file share which was automatically mounted on to the container.**
+  *Note that the model was not included in the application and has been downloaded and read from the Azure file share which was automatically mounted on to the container.*
 
   This is a view of the Azure file share "model". As can be seen the models are in the file share.
 
@@ -187,9 +187,11 @@ with the result of the form as before.
 
 Changing the application setting "ModelName" to some other model name would allow a different model to be downloaded(once) to the file share and will be used subsequently from there. This can be done without needing to re-deploy the app showing the separation of the app from the model.
 
-### Deploying the sample to a Azure Functions Premium Plan for larger memory SKU's and no cold start
+### Deploying the sample to a Azure Functions Premium Plan for no cold start
 
+In this application the machine learning model is loaded at the time of cold start only. For large models though this can still take a few seconds. For cases that this is not acceptable,  this application can be deployed to a [Linux Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings). This plan guarantees no cold start by pre-provisioning instances.
 
+Further, for some of the models which are very large (i.e. several GB in size), the Premium plan allows for [larger memory SKU's](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#available-instance-skus) including plans where a particular instance can have up-to 14GB of memory.
 
 ### Contributing
 
