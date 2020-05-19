@@ -171,12 +171,11 @@ Now, you can go ahead and deploy the local app to your app in Azure. You can use
 12:04:08 AM pytorch-image-consumption: [07:04:08+0000] Successfully installed azure-functions-1.2.1 certifi-2020.4.5.1 chardet-3.0.4 idna-2.9 numpy-1.15.4 pillow-7.1.2 requests-2.23.0 six-1.14.0 torch-1.4.0+cpu torchvision-0.5.0 urllib3-1.25.9
 
 ```
-Once the function app is deployed invoke the function app in a browser by passing a image using the img as a query parameter.
-As an example:
+Once the function app is deployed invoke the function app in a browser by passing a image using the img as a query parameter. As an example: (replace pytorch-image-consumption with the name of an application and the appropriate function code)
 
-http://pytorch-image-consumption.azurewebsites.net/api/classify?code=function-code&img=https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/penguin.jpg
+http://pytorch-image-consumption.azurewebsites.net/api/classify?code=**function-code**&img=https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/penguin.jpg
 
-with the result of the form as before.
+with the result of the form as before
   ![results-production](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/results-production.png)
 
   *Note that the model was not included in the application and has been downloaded and read from the Azure file share which was automatically mounted on to the container.*
