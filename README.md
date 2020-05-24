@@ -178,7 +178,7 @@ http://pytorch-image-consumption.azurewebsites.net/api/classify?code=**function-
 with the result of the form as before
   ![results-production](https://raw.githubusercontent.com/anirudhgarg/functions-imageidentify/master/media/results-production.png)
 
-  *Note that the model was not included in the application and has been downloaded and read from the Azure file share which was automatically mounted on to the container.*
+  **Note that the model was not included in the application and has been downloaded and read from the Azure file share which was automatically mounted on to the container.**
 
   This is a view of the Azure file share "model". As can be seen the models are in the file share.
 
