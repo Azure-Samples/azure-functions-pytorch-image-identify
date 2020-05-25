@@ -190,7 +190,10 @@ Changing the application setting "ModelName" to some other model name would allo
 
 In this application the machine learning model is loaded at the time of cold start only. For large models though this can still take a few seconds. For cases that this is not acceptable,  this application can be deployed to a [Linux Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings). This plan guarantees no cold start by pre-provisioning instances.
 
-Further, for some of the models which are very large (i.e. several GB in size), the Premium plan allows for [larger memory SKU's](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#available-instance-skus) including plans where a particular instance can have up-to 14GB of memory.
+### Deploying the sample to a Kubernetes cluster using GPU's
+
+In this application the machine learning model is loaded at the time of cold start only. For large models though this can still take a few seconds. For cases that this is not acceptable,  this application can be deployed to a [Linux Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings). This plan guarantees no cold start by pre-provisioning instances.
+
 
 ### Contributing
 
