@@ -169,7 +169,6 @@ Now, you can go ahead and deploy the local app to your app in Azure. You can use
 ....
 12:03:46 AM pytorch-image-consumption: [07:03:46+0000] Installing collected packages: azure-functions, idna, certifi, chardet, urllib3, requests, numpy, torch, pillow, six, torchvision
 12:04:08 AM pytorch-image-consumption: [07:04:08+0000] Successfully installed azure-functions-1.2.1 certifi-2020.4.5.1 chardet-3.0.4 idna-2.9 numpy-1.15.4 pillow-7.1.2 requests-2.23.0 six-1.14.0 torch-1.4.0+cpu torchvision-0.5.0 urllib3-1.25.9
-
 ```
 Once the function app is deployed invoke the function app in a browser by passing a image using the img as a query parameter. As an example: (replace pytorch-image-consumption with the name of an application and the appropriate function code)
 
@@ -186,14 +185,11 @@ with the result of the form as before
 
 Changing the application setting "ModelName" to some other model name would allow a different model to be downloaded(once) to the file share and will be used subsequently from there. This can be done without needing to re-deploy the app showing the separation of the app from the model.
 
-### Deploying the sample to a Azure Functions Premium Plan for no cold start
-
-In this application the machine learning model is loaded at the time of cold start only. For large models though this can still take a few seconds. For cases that this is not acceptable,  this application can be deployed to a [Linux Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings). This plan guarantees no cold start by pre-provisioning instances.
+### Deploying the sample to a Azure Functions Premium Plan for no cold start and higher SKU's
+In this application the machine learning model is loaded at the time of cold start only. For large models though this can still take a few seconds. For cases that this is not acceptable,  this application can be deployed to a [Linux Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings). This plan guarantees no cold start by pre-provisioning instances. This is how to create a new [Linux Premium Azure Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#create-a-premium-plan) and the rest of the steps above are the same.
 
 ### Deploying the sample to a Kubernetes cluster using GPU's
-
-In this application the machine learning model is loaded at the time of cold start only. For large models though this can still take a few seconds. For cases that this is not acceptable,  this application can be deployed to a [Linux Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings). This plan guarantees no cold start by pre-provisioning instances.
-
+This Function app can also be [deployed](https://markheath.net/post/azure-functions-aks-keda) to a [Kubernetes cluster](https://docs.microsoft.com/en-us/azure/azure-functions/functions-kubernetes-keda) which is using GPU's and can scale up and down using [KEDA](keda.sh). Here is a way to scale up and down your [Http Triggered Function app in Kubernetes](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)
 
 ### Contributing
 
