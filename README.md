@@ -7,8 +7,6 @@ products:
 description: "This sample and walk-through deploys a Python Azure Function app for a machine learning scenario "
 ---
 
-:construction: This is still under development! :construction:
-
 ## Azure Functions Python Machine Learning example (showing usage of Remote Build and Bring your own Storage)
 
 <!-- 
