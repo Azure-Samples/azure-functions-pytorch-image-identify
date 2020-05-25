@@ -7,7 +7,7 @@ products:
 description: "This sample and walk-through deploys a Python Azure Function app for a machine learning scenario "
 ---
 
-## Azure Functions Python Machine Learning example (showing usage of Remote Build and Bring your own Storage)
+## Azure Functions Python Machine Learning example
 
 <!-- 
 Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
