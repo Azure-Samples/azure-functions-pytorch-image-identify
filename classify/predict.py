@@ -46,6 +46,10 @@ elif(modelName == 'vgg11'):
     model = models.vgg11(pretrained=True, progress=False)
 elif(modelName == 'vgg11_bn'):
     model = models.vgg11_bn(pretrained=True, progress=False)
+elif(modelName == 'vgg13'):
+    model = models.vgg13(pretrained=True, progress=False)
+elif(modelName == 'vgg13_bn'):
+    model = models.vgg13_bn(pretrained=True, progress=False)
 elif(modelName == 'squeezenet1_0'):
     model = models.squeezenet1_0(pretrained=True, progress=False)
 elif(modelName == 'squeezenet1_1'):
