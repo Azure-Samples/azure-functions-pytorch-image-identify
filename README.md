@@ -4,10 +4,10 @@ languages:
 - python
 products:
 - azure-functions
-description: "This sample and walk-through deploys a Python Azure Function app for a machine learning scenario "
+description: "This sample and walk-through deploys a PyTorch image classification Python Azure Function app showing Remote Build and Azure Files integration"
 ---
 
-# Azure Functions Python Machine Learning example
+# Azure Functions Python ML image classification 
 
 <!-- 
 Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
