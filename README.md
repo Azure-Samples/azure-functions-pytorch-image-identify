@@ -7,7 +7,7 @@ products:
 description: "This sample and walk-through deploys a PyTorch image classification Python Azure Function app showing Remote Build and Azure Files integration"
 ---
 
-# Azure Functions Python ML image classification 
+# Azure Functions PyTorch ML multi-model image classification with Remote Build and Azure File integration
 
 <!-- 
 Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
