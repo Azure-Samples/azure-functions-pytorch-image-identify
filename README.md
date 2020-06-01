@@ -5,6 +5,7 @@ languages:
 products:
 - azure-functions
 description: "This sample and walk-through deploys a PyTorch image classification Python Azure Function app showing Remote Build and Azure Files integration"
+urlFragment: azure-functions-pytorch-image-identify
 ---
 
 # Azure Functions PyTorch ML multi-model image classification with Remote Build and Azure File integration
@@ -187,7 +188,7 @@ Changing the application setting "ModelName" to some other model name would allo
 In this application the machine learning model is loaded at the time of cold start only. For large models though this can still take a few seconds. For cases that this is not acceptable,  this application can be deployed to a [Linux Premium plan](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings). This plan guarantees no cold start by pre-provisioning instances. This is how to create a new [Linux Premium Azure Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#create-a-premium-plan) and the rest of the steps above are the same.
 
 ### Deploying the sample to a Kubernetes cluster using GPU's
-This Function app can also be [deployed](https://markheath.net/post/azure-functions-aks-keda) to a [Kubernetes cluster](https://docs.microsoft.com/en-us/azure/azure-functions/functions-kubernetes-keda) which is using GPU's and can scale up and down using [KEDA](keda.sh). Here is a way to scale up and down your [Http Triggered Function app in Kubernetes](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)
+This Function app can also be [deployed](https://markheath.net/post/azure-functions-aks-keda) to a [Kubernetes cluster](https://docs.microsoft.com/en-us/azure/azure-functions/functions-kubernetes-keda) which is using GPU's and can scale up and down using [KEDA](https://keda.sh/). Here is a way to scale up and down your [Http Triggered Function app in Kubernetes](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)
 
 ### Contributing
 
