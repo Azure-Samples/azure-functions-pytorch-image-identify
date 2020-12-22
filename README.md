@@ -4,7 +4,7 @@ languages:
 - python
 products:
 - azure-functions
-description: "This sample and walk-through deploys a PyTorch image classification Python Azure Function app showing Remote Build and Azure Files integration"
+description: "This sample and walk-through deploys a PyTorch image classification Python Azure Function App showing Remote Build and Azure Files integration"
 urlFragment: azure-functions-pytorch-image-identify
 ---
 
@@ -18,7 +18,7 @@ Guidance on onboarding samples to docs.microsoft.com/samples: https://review.doc
 Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
 -->
 
-This sample shows how to set up, write and deploy a Python Machine Learning inference Azure Function app which uses Remote Build and Bring your own Storage features. It uses the pre-trained PyTorch image recognition models from here.
+This sample shows how to set up, write and deploy a Python Machine Learning inference Azure Function App which uses Remote Build and Bring your own Storage features. It uses the pre-trained PyTorch image recognition models from here.
 
 ### Prerequisites
 
